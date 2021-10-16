@@ -28,27 +28,49 @@ void release(safe_array* ar)
 void resize(safe_array* ar, int n)
 {
 	// ToOo:配列の要素数を変更しよう！
+	ar->num = n;
+	if (n <= 0) {
+		n = 1;
+	}
+
+
+	ar->addr = realloc(ar->addr, sizeof(int) * n);
+	
 }
 
 // safe_array のindex番目の要素にvalを設定する
 // index が確保されていない場所を指していたら返り値をfalseにする（設定出来たらtrue）
 bool set(const safe_array* ar, int index, int val)
 {
-	// ToOo:配列の要素を変更しよう！
-	return false;
+	if (index+1 > ar->num) {
+		return false;
+	}
+	if (index < 0) {
+		return false;
+	}
+
+	ar->addr[index] = val;
+	return true;
 }
 
 // safe_array のindex番目の要素を取得する
 // index が確保されていない場所を指していたら0を返す
 int get(const safe_array* ar, int index)
 {
-	// ToOo:要素を所得して、indexがおかしかったら0を返そう
-	return -1;
+	int no;
+	if (index+1 > ar->num) {
+		return 0;
+	}
+	if (index < 0) {
+		return 0;
+	}
+
+	no = ar->addr[index];
+	return no;
 }
 
 // int_array の要素数を取得する
 int size(const safe_array* ar)
 {
-	// ToOo: 配列の要素数を返そう
-	return -1;
+	return ar->num;
 }
