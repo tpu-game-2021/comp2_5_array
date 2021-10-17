@@ -27,6 +27,14 @@ void release(safe_array* ar)
 // safe_array の要素数を変更する(以前の値は要素が同じ範囲で残す)
 void resize(safe_array* ar, int n)
 {
+	if (n <= 0) n = 1;
+
+	ar->addr = (int*)malloc(sizeof(int) * n);
+
+	if (ar->addr == NULL)
+		ar->num = 0;
+
+	ar->num = n;
 	// ToOo:配列の要素数を変更しよう！
 }
 
@@ -35,7 +43,13 @@ void resize(safe_array* ar, int n)
 bool set(const safe_array* ar, int index, int val)
 {
 	// ToOo:配列の要素を変更しよう！
-	return false;
+	if (ar->num > index && index >= 0)
+	{
+		ar->addr[index] = val;
+		return true;
+	}
+	else 
+		return false;
 }
 
 // safe_array のindex番目の要素を取得する
@@ -43,12 +57,15 @@ bool set(const safe_array* ar, int index, int val)
 int get(const safe_array* ar, int index)
 {
 	// ToOo:要素を所得して、indexがおかしかったら0を返そう
-	return -1;
+	if (ar->num > index && index >= 0)
+		return ar->addr[index];
+	else
+		return 0;
 }
 
 // int_array の要素数を取得する
 int size(const safe_array* ar)
 {
 	// ToOo: 配列の要素数を返そう
-	return -1;
+	return ar->addr;
 }
