@@ -131,7 +131,7 @@ namespace UnitTest
 			resize(&ar, 10);						// 要素数10に変更
 			Assert::AreEqual(10, size(&ar));		// 要素数は10
 			Assert::AreEqual(2, get(&ar, 0));		// ar.addr[0]を取得
-			Assert::AreEqual(true, set(&ar, 1, 3));	// 要素1に設定できる
+			Assert::AreEqual(true, set(&ar, 1, 3));	// 要素1に設定で
 			release(&ar);
 		}
 
