@@ -34,9 +34,20 @@ void resize(safe_array* ar, int n)
 // index が確保されていない場所を指していたら返り値をfalseにする（設定出来たらtrue）
 bool set(const safe_array* ar, int index, int val)
 {
-	// ToOo:配列の要素を変更しよう！
-	return false;
+	if (ar->num > index && 0 <= index)
+	{
+		ar->addr[index] = val;
+
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
+
+// ToOo:配列の要素を変更しよう！
+	
 
 // safe_array のindex番目の要素を取得する
 // index が確保されていない場所を指していたら0を返す
