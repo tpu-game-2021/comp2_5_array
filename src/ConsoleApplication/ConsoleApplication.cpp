@@ -13,7 +13,8 @@ int main()
 	safe_array ar;
 	initialize(&ar, 10);
 
-	for (int i = 0; i < size(&ar); i++) {
+	for (int i = 0; i < size(&ar); i++) 
+	{
 		set(&ar, i, i);// 0, 1, 2, ... と値を設定
 	}
 
@@ -24,12 +25,14 @@ int main()
 	printf("\n");
 
 	resize(&ar, 100);
-	for (int i = 10; i < 100; i++) {
+	for (int i = 10; i < 100; i++)
+	{
 		set(&ar, i, i);// 10, 11, 12, ..., 99 と値を設定
 	}
 
 	// 値を出力（全てが範囲内になった！）
-	for (int i = 0; i < 100; i++) {
+	for (int i = 0; i < 100; i++)
+	{
 		printf("%d, ", get(&ar, i));
 	}
 	printf("\n");
