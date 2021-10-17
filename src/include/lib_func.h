@@ -16,7 +16,7 @@ typedef struct
 void initialize(safe_array* ar, int n);
 
 // safe_array を解放する
-void release(safe_array *ar);
+void release(safe_array* ar);
 
 // safe_array の要素数を変更する(以前の値は要素が同じ範囲で残す)
 void resize(safe_array* ar, int n);
