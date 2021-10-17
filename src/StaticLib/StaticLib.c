@@ -30,8 +30,12 @@ void resize(safe_array* ar, int n)
 	// ToOo:配列の要素数を変更しよう！
 
 	ar->num = n;
+	if (n <= 0) 
+	{
+		n = 1;
+	}
 
-	ar->addr = (int*)realloc(ar->addr, sizeof(int) * n);
+	ar->addr = realloc(ar->addr, sizeof(int) * n);
 	if (ar->addr == NULL)
 	{
 		ar->num = 0;
